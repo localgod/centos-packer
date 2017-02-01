@@ -1,4 +1,4 @@
-# CentOS SRE vagrant box
+# CentOS vagrant box
 
 Currently this build, using [Packer](https://www.packer.io/), supports building a [Vagrant](https://www.vagrantup.com/) image for [Virtualbox](https://www.virtualbox.org/) with guest additions installed based on the [CentOS](https://www.centos.org/) version 7 minimal installation ISO.
 
