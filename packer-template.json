@@ -1,0 +1,52 @@
+{
+	"builders": [{
+		"type": "virtualbox-iso",
+		"boot_command": [
+			"<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+		],
+		"boot_wait": "10s",
+		"disk_size": 81920,
+		"guest_os_type": "RedHat_64",
+		"headless": true,
+		"http_directory": "http",
+		"iso_urls": [
+			"http://mirrors.dk.telia.net/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+			"CentOS-7-x86_64-Minimal-1611.iso"
+		],
+		"iso_checksum": "71a7aa147877b413497cdff5b1e0aa5bc0c9484f",
+		"iso_checksum_type": "sha1",
+		"ssh_username": "vagrant",
+		"ssh_password": "vagrant",
+		"ssh_port": 22,
+		"ssh_wait_timeout": "10000s",
+		"shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+		"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+		"virtualbox_version_file": ".vbox_version",
+		"vm_name": "centos-7-x86_64",
+		"vboxmanage": [
+			[
+				"modifyvm",
+				"{{.Name}}",
+				"--memory",
+				"512"
+			],
+			[
+				"modifyvm",
+				"{{.Name}}",
+				"--cpus",
+				"2"
+			]
+		]
+	}],
+	"post-processors": [{
+		"output": "builds/{{.Provider}}-centos7.box",
+		"type": "vagrant"
+	}],
+	"provisioners": [{
+		"type": "shell",
+		"execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+		"scripts": [
+			"base.sh"
+		]
+	}]
+}

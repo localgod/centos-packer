@@ -1,0 +1,7 @@
+/packer_cache
+/output-virtualbox-iso
+/.buildpath
+/.project
+/.vagrant
+/builds
+/packer.exe
