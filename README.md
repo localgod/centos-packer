@@ -1,24 +1,29 @@
-# CentOS vagrant box
+# CentOS build
 
-Currently this build, using [Packer](https://www.packer.io/), supports building a [Vagrant](https://www.vagrantup.com/) image for [Virtualbox](https://www.virtualbox.org/) with guest additions installed based on the [CentOS](https://www.centos.org/) version 7 minimal installation ISO.
+Currently this build, using [Packer](https://www.packer.io/), supports building:
+
+- a [Vagrant](https://www.vagrantup.com/) image for [Virtualbox](https://www.virtualbox.org/) with guest additions installed
+- a [Docker](https://www.docker.com/) image
+
+based on the official [CentOS](https://www.centos.org/) version 7.3.1611 release.
 
 [Puppet](https://puppet.com/) is pre-installed. See `base.sh` for details.
 
 ## Prerequisite
 
-Virtualbox and Vagrant is installed on build host. This guide assumes the host is running Windows as OS and that the host is not a virtualbox/vagrant image itself.
+Virtualbox, Vagrant and Docker is installed on build host. This guide assumes that the host is not a virtualbox/vagrant image itself.
 
 ## Build
 
-Download packer:
-
-`curl https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_windows_amd64.zip -o packer_0.12.2_windows_amd64.zip`
+- [Download Packer](https://www.packer.io/downloads.html)
 
 Build vagrant box:
 
-`./packer.exe build -force packer-template.json`
+`./packer build -force packer-template.json`
 
 ## Testing
+
+### Vagrant
 
 A `Vagrantfile` has been included in the repo for testing the build.
 
@@ -28,7 +33,12 @@ If you do multiple trial builds remember to remove old versions between builds:
 
 `vagrant box remove file://builds/virtualbox-centos7.box`
 
+### Docker
+
+You can test the new Docker images by running:
+
+`docker run -it localgod/centos:7.3.1611 /bin/bash`
+
 ## Virtualbox version note
 
-Packer uses the version of Virtualbox installed on the build host for creating the box. As a result, guest additions version in the vagrant box
-will be that of the Virtualbox installation that created the box.
+Packer uses the version of Virtualbox installed on the build host for creating the Vagrant box. As a result, guest additions version in the vagrant box will be that of the Virtualbox installation that created the box.

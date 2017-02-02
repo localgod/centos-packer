@@ -5,3 +5,5 @@
 /.vagrant
 /builds
 /packer.exe
+/packer
+/CentOS-7-x86_64-Minimal-1611.iso
