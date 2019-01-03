@@ -2,20 +2,18 @@
 
 Currently this build, using [Packer](https://www.packer.io/), supports building:
 
-- a [Vagrant](https://www.vagrantup.com/) image for [Virtualbox](https://www.virtualbox.org/) with guest additions installed
-- a [Docker](https://www.docker.com/) image
+-   a [Vagrant](https://www.vagrantup.com/) image for [Virtualbox](https://www.virtualbox.org/) with guest additions installed
+-   a [Docker](https://www.docker.com/) image
 
-based on the official [CentOS](https://www.centos.org/) version 7.3.1611 release.
+based on the official [CentOS](https://www.centos.org/) version 7.6.1810 release.
 
 [Puppet](https://puppet.com/) is pre-installed. See `base.sh` for details.
 
 ## Prerequisite
 
-Virtualbox, Vagrant and Docker is installed on build host. This guide assumes that the host is not a virtualbox/vagrant image itself.
+Virtualbox, Vagrant, Packer and Docker is installed on build host. This guide assumes that the host is not a virtualbox/vagrant image itself.
 
 ## Build
-
-- [Download Packer](https://www.packer.io/downloads.html)
 
 Build vagrant box:
 
