@@ -37,6 +37,3 @@ gpgcheck=0
 EOF
 
 yum -y update
-
-# Puppet
-yum install -y puppet
