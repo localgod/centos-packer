@@ -7,7 +7,7 @@ Currently this build, using [Packer](https://www.packer.io/), supports building:
 
 based on the official [CentOS](https://www.centos.org/) version 7.6.1810 release.
 
-[Puppet](https://puppet.com/) is pre-installed. See `base.sh` for details.
+[Puppet](https://puppet.com/) is pre-installed on the vagrant box. See `puppet.sh` for details.
 
 ## Prerequisite
 
@@ -17,7 +17,11 @@ Virtualbox, Vagrant, Packer and Docker is installed on build host. This guide as
 
 Build vagrant box:
 
-`./packer build -force packer-template.json`
+`./make build_vagrant`
+
+Build docker image:
+
+`./make build_vagrant`
 
 ## Testing
 
@@ -35,7 +39,7 @@ If you do multiple trial builds remember to remove old versions between builds:
 
 You can test the new Docker images by running:
 
-`docker run -it localgod/centos:7.3.1611 /bin/bash`
+`docker run -it localgod/centos:7.6.1810 /bin/bash`
 
 ## Virtualbox version note
 

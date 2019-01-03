@@ -19,6 +19,7 @@ before_install:
 before_script:
 
 script:
-  - packer version
+  - make build_docker
+  - make build_vagrant
 
 after_success:
