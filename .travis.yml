@@ -21,7 +21,7 @@ before_script:
 
 script:
   - make build_docker
-  - docker run --rm --name --name for_export -dt $(docker images -q | awk 'NR==1{print $1}') /bin/bash
+  - docker run --rm --name for_export -dt $(docker images -q | awk 'NR==1{print $1}') /bin/bash
   - docker export for_export > ./export.tar
   - cat ./export.tar | docker import - localgod/centos:latest
   - rm ./export.tar
