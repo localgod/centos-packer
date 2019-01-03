@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/localgod/centos-packer.svg?branch=master)](https://travis-ci.org/localgod/centos-packer)
+
 # CentOS build
 
 Currently this build, using [Packer](https://www.packer.io/), supports building:

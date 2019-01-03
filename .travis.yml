@@ -20,6 +20,5 @@ before_script:
 
 script:
   - make build_docker
-  - make build_vagrant
 
 after_success:
