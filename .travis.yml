@@ -1,0 +1,24 @@
+sudo: required
+
+services:
+  - docker
+
+dist: xenial
+addons:
+  apt:
+    packages:
+    - docker
+
+env:
+
+os:
+  - linux
+
+before_install:
+
+before_script:
+
+script:
+  - packer version
+
+after_success:

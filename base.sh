@@ -1,4 +1,4 @@
-releasever=7.3.1611
+releasever=7.6.1810
 basearch=x86_64
 
 # Yum
@@ -18,7 +18,7 @@ gpgcheck=0
 
 [epel]
 name=epel
-baseurl=http://mirrors.telianet.dk/epel/7/$basearch/
+baseurl=https://mirror.netsite.dk/epel/7/$basearch/
 enabled=1
 gpgcheck=0
 
@@ -34,11 +34,6 @@ baseurl=http://yum.puppetlabs.com/el/7/dependencies/$basearch/
 enabled=1
 gpgcheck=0
 
-[nodejs]
-name=nodejs
-baseurl=https://rpm.nodesource.com/pub_7.x/el/7/$basearch/
-enabled=1
-gpgcheck=0
 EOF
 
 yum -y update
