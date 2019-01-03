@@ -72,7 +72,6 @@
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
           "scripts": [
             "base.sh",
-            "puppet.sh",
             "vbox.sh",
             "vagrant.sh",
             "cleanup.sh"

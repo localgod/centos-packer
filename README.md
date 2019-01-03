@@ -9,7 +9,7 @@ Currently this build, using [Packer](https://www.packer.io/), supports building:
 
 based on the official [CentOS](https://www.centos.org/) version 7.6.1810 release.
 
-[Puppet](https://puppet.com/) is pre-installed on the vagrant box. See `puppet.sh` for details.
+[Puppet](https://puppet.com/) support may be added by including `puppet.sh` int the provisioner section.
 
 ## Prerequisite
 

@@ -22,18 +22,6 @@ baseurl=https://mirror.netsite.dk/epel/7/$basearch/
 enabled=1
 gpgcheck=0
 
-[puppetlabs]
-name=puppetlabs
-baseurl=http://yum.puppetlabs.com/el/7/products/$basearch/
-enabled=1
-gpgcheck=0
-
-[puppetlabs-dependencies]
-name=puppetlabs-dependencies
-baseurl=http://yum.puppetlabs.com/el/7/dependencies/$basearch/
-enabled=1
-gpgcheck=0
-
 EOF
 
-yum -y update
+yum -y -x 'kernel*' update
