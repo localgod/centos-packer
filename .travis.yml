@@ -21,10 +21,12 @@ before_script:
 
 script:
   - make build_docker
-  - docker run -it --name for_export localgod/centos:7.6.1810 /bin/bash
+  - docker run --rm --name --name for_export -dt localgod/centos:7.6.1810 /bin/bash
   - docker export for_export > ./export.tar
   - cat ./export.tar | docker import - localgod/centos:latest
   - rm ./export.tar
+  - docker stop for_export
+  - docker rm for_export
   - docker images
 
 after_success:
