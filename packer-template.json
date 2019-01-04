@@ -1,6 +1,9 @@
 {
-  "builders": [
-    {
+  "variables": {
+    "centos_version": "7.6.1810",
+    "centos_build": "1810"
+  },
+  "builders": [{
       "name": "vagrant",
       "type": "virtualbox-iso",
       "boot_command": [
@@ -12,8 +15,7 @@
       "headless": true,
       "http_directory": "http",
       "iso_urls": [
-        "http://mirror.fysik.dtu.dk/linux/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso",
-        "CentOS-7-x86_64-Minimal-1810.iso"
+        "http://mirror.fysik.dtu.dk/linux/centos/{{user `centos_version`}}/isos/x86_64/CentOS-7-x86_64-Minimal-{{user `centos_build`}}.iso"
       ],
       "iso_checksum": "5833cb3189a61c02abf50fb8c2db16cfa669bc3c",
       "iso_checksum_type": "sha1",
@@ -43,12 +45,11 @@
     {
       "name": "docker",
       "type": "docker",
-      "image": "centos:7.6.1810",
+      "image": "centos:{{user `centos_version`}}",
       "commit": true
     }
   ],
-  "post-processors": [
-    {
+  "post-processors": [{
       "output": "builds/{{.Provider}}-centos7.box",
       "type": "vagrant",
       "only": [
@@ -58,33 +59,33 @@
     {
       "type": "docker-tag",
       "repository": "localgod/centos",
-      "tag": "7.6.1810",
+      "tag": "{{user `centos_version`}}",
       "only": [
         "docker"
       ]
     }
   ],
-  "provisioners": [
-    {
-      "type": "shell",
-      "override": {
-        "vagrant": {
-          "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
-          "scripts": [
-            "base.sh",
-            "vbox.sh",
-            "vagrant.sh",
-            "cleanup.sh"
-          ]
-        },
-        "docker": {
-          "execute_command": "echo 'packer'| sh '{{.Path}}'",
-          "scripts": [
-            "base.sh",
-            "cleanup.sh"
-          ]
-        }
+  "provisioners": [{
+    "type": "shell",
+    "override": {
+      "vagrant": {
+        "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+        "scripts": [
+          "base.sh",
+          "gnome.sh",
+          "puppet.sh",
+          "vbox.sh",
+          "vagrant.sh",
+          "cleanup.sh"
+        ]
+      },
+      "docker": {
+        "execute_command": "echo 'packer'| sh '{{.Path}}'",
+        "scripts": [
+          "base.sh",
+          "cleanup.sh"
+        ]
       }
     }
-  ]
+  }]
 }
