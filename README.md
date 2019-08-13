@@ -9,8 +9,8 @@ Currently this build, using [Packer](https://www.packer.io/), supports building:
 
 based on the official [CentOS](https://www.centos.org/) version 7.6.1810 release.
 
--   [Puppet](https://puppet.com/) support may/removed with `puppet.sh` in the provisioner section.
 -   [Gnome](https://www.gnome.org/) support may/removed with `gnome.sh` in the provisioner section. It must be added before `vbox.sh`.
+-   [Ansible](https://www.ansible.com/) is available for provisioning of vagrant image.
 
 ## Prerequisite
 

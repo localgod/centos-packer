@@ -73,7 +73,6 @@
         "scripts": [
           "base.sh",
           "gnome.sh",
-          "puppet.sh",
           "vbox.sh",
           "vagrant.sh",
           "cleanup.sh"
