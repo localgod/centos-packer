@@ -1,5 +1,5 @@
 build_docker:
-	packer build -force -except=vagrant packer-template.json
+	packer build -force docker.json
 
 build_vagrant:
-	packer build -force -except=docker packer-template.json
+	packer build -force vagrant.json

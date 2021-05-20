@@ -1,0 +1,66 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 81920,
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_os_type": "RedHat_64",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum": "sha256:07b94e6b1a0b0260b94c83d6bb76b26bf7a310dc78d7a9c7432809fb9bc6194a",
+      "iso_urls": [
+        "http://mirror.fysik.dtu.dk/linux/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"
+      ],
+      "name": "vagrant",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_timeout": "10000s",
+      "ssh_username": "vagrant",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "512"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ]
+      ],
+      "virtualbox_version_file": ".vbox_version",
+      "vm_name": "centos-7-x86_64"
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "builds/{{.Provider}}-centos7.box",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "override": {
+        "vagrant": {
+          "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+          "scripts": [
+            "base.sh",
+            "CIS.sh",
+            "gnome.sh",
+            "vbox.sh",
+            "vagrant.sh",
+            "cleanup.sh"
+          ]
+        }
+      },
+      "type": "shell"
+    }
+  ]
+}

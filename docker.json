@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+      "commit": true,
+      "image": "centos:7",
+      "name": "docker",
+      "type": "docker"
+    }
+  ],
+  "post-processors": [
+    {
+      "only": [
+        "docker"
+      ],
+      "repository": "ghcr.io/localgod/centos",
+      "tags": [
+        "latest"
+      ],
+      "type": "docker-tag"
+    }
+  ],
+  "provisioners": [
+    {
+      "override": {
+        "docker": {
+          "execute_command": "echo 'packer'| sh '{{.Path}}'",
+          "scripts": [
+            "yum.sh",
+            "timezone.sh"
+          ]
+        }
+      },
+      "type": "shell"
+    }
+  ]
+}

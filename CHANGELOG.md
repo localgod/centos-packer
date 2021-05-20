@@ -6,6 +6,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This project adheres to [Keep a CHANGELOG](http://keepachangelog.com/)
 
+## [1.0.2] 2021-05-20
+
+### Updated
+
+-   Bumped CentOS to version 7.9
+
 ## [1.0.2] 2019-08-13
 
 ### Updated
