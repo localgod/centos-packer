@@ -14,13 +14,14 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
-    - name: check capabilities
-      run: |
-        /usr/local/bin/packer --version
-        /usr/local/bin/VBoxManage --version
-        /usr/local/bin/vagrant --version
-#    - name: Build container
-#      run: /usr/local/bin/packer build -force docker.json
+    - name: Cache packer files
+      id: packer-cache
+      uses: actions/cache@v2
+      with:
+        path: packer_cache
+        key: ${{ runner.os }}-packer-${{ hashFiles('**/*.iso') }}
+        restore-keys: |
+          ${{ runner.os }}-packer-
     - name: Build vagrant box
       run: /usr/local/bin/packer build -force vagrant.json
 
